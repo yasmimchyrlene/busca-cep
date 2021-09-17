@@ -8,7 +8,7 @@ public class Endereco {
     private String cidade;
     private String estado;
 
-    public Endereco(String cep, String rua, String bairro, String cidade, String estado) {
+      public Endereco(String cep, String rua, String bairro, String cidade, String estado) {
         this.cep = cep;
         this.rua = rua;
         this.bairro = bairro;
@@ -17,6 +17,7 @@ public class Endereco {
     }
 
     public String getCep() {
+
         return cep;
     }
 
