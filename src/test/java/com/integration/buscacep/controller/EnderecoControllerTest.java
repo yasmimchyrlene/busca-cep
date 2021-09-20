@@ -32,13 +32,13 @@ public class EnderecoControllerTest {
     }
 
     @Test
-    public void buscandoOEnderecoComOCEPERetornandoEndereco(){
+    public void buscandoOEnderecoComOCEPERetornandoEndereco() throws Exception {
         when(enderecoServiceImpl.encontraCep(anyString())).thenReturn(endereco);
         var result = enderecoController.getCep("04094050");
         Assert.assertEquals("deveria retornar o cep encontrado",endereco,result.getBody());
     }
     @Test
-    public void buscandoOEnderecoComOCEPERetornando200(){
+    public void buscandoOEnderecoComOCEPERetornando200() throws Exception {
         when(enderecoServiceImpl.encontraCep(anyString())).thenReturn(endereco);
         var result = enderecoController.getCep("04094050");
         Assert.assertEquals("deveria retornar o status do CEP",
