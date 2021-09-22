@@ -5,7 +5,7 @@ HTTP utilizando o protocolo de comunicação REST, nesta aplicação
 fazemos uma integração com a API Webservice viacep, utilizando a classe
 RestTemplate. Também, há validações do CEP,se for invalido, retornam 400 "bad request".
 Caso o CEP não for encontrado, modificamos o CEP para retentativas no viacep,
-tendo um CEP zerado (0000000) retornamos um erro de CEP não encontrado.
+tendo um CEP zerado (0000000) retornamos um erro de CEP inválido.
 
 
 Tendo como tecnologias para o desenvolvimento dessa API:
