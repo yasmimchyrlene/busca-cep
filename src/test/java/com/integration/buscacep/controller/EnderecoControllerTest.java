@@ -1,5 +1,6 @@
 package com.integration.buscacep.controller;
 
+import com.integration.buscacep.controller.handler.exception.GlobalException;
 import com.integration.buscacep.model.Endereco;
 import com.integration.buscacep.service.EnderecoServiceImpl;
 import org.junit.Assert;
@@ -43,6 +44,14 @@ public class EnderecoControllerTest {
         var result = enderecoController.getCep("04094050");
         Assert.assertEquals("deveria retornar o status do CEP",
                 HttpStatus.OK,result.getStatusCode());
+    }
+    @Test(expected = GlobalException.class)
+    public void buscandoOEnderecoComOCEPERetornando400CEPRequerNumeros() throws Exception {
+         enderecoController.getCep("errrrror");
+    }
+    @Test(expected = GlobalException.class)
+    public void buscandoOEnderecoComOCEPERetornando400FormatoDoCepInvalido() throws Exception {
+         enderecoController.getCep("000000000");
     }
 
 }

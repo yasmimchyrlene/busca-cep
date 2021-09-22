@@ -1,6 +1,7 @@
 package com.integration.buscacep.service;
 
 import com.integration.buscacep.config.RestTemplateIntegration;
+import com.integration.buscacep.controller.handler.exception.GlobalException;
 import com.integration.buscacep.model.Endereco;
 import com.integration.buscacep.model.ViaCep;
 import org.junit.Assert;
@@ -50,4 +51,15 @@ public class EnderecoServiceImplTest {
         var result = enderecoServiceImpl.encontraCep(cep);
         Assert.assertEquals("deveria retornar o endereço",endereco.getCep(),result.getCep());
     }
+    @Test(expected = GlobalException.class)
+    public void buscarCepERetornarEnderecoRetornandoErro(){
+        String cep = "00000000";
+        viaCep = new ViaCep();
+        when(restTemplateIntegration
+                .getForObject("https://viacep.com.br/ws/" + cep + "/json/", ViaCep.class))
+                .thenReturn(viaCep);
+        enderecoServiceImpl.encontraCep(cep);
+    }
+
+
 }
